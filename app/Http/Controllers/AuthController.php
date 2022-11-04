@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
-use Illuminate\Support\Facedas\Hash;
+use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
@@ -41,7 +41,7 @@ class AuthController extends Controller
         // Check email
         $user = User::where('email', $fields['email'])->first();
 
-        // Chech password
+        // Check password
         if (!$user || !Hash::check($fields['password'], $user->password)){
             return response([
                 'message' => 'unauthorized'
